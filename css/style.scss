@@ -1,0 +1,189 @@
+@import 'bourbon/_bourbon.scss';
+
+// Variables
+
+$garamond : 'EB Garamond', serif;
+$volkorn : 'Vollkorn', serif;
+
+//Mixins
+@mixin center {
+	position: absolute;
+	top:50%;
+	left:50%;
+	@include transform(translate(-50%,-50%));
+}
+
+@mixin stretch {
+	width:100%;
+	height:100%;
+}
+
+@mixin centerLeft {
+	position: absolute;
+	top:50%;
+	left:0;
+	@include transform(translate(0%,-50%));
+}
+
+@mixin centerRight {
+	position: absolute;
+	top:50%;
+	right:0;
+	@include transform(translate(0%,-50%));
+}
+
+@mixin centerHorizontal {
+	position: absolute;
+	left:50%;
+	@include transform(translate(-50%, 0%));
+}
+
+@mixin centerVertical {
+	position: relative;
+	top:50%;
+	@include transform(translateY(-50%));
+}
+
+@mixin triangle($direction, $color) {
+	//for the longer border length, add the two shorter together
+	// and find 86.66% of that sum, and use it.
+
+	border-style: solid;
+	@if $direction == left {
+		border-width: 18px 31.2px 18px 0;
+		border-color: transparent $color transparent transparent;
+	}
+	@else if $direction == right {
+		border-width: 18px 0 18px 31.2px;
+		border-color: transparent transparent transparent $color;
+	}
+	
+}
+
+@mixin breakpoint($point) {
+	@if $point == small {
+    	@media (max-width: 500px) { @content; }
+	}
+	@else if $point == medium {
+    	@media (max-width: 1250px) { @content; }
+	}
+	@else {
+		@media (max-width: $point) { @content; }
+	}
+  
+}
+
+@mixin change {
+	@include transition(all .15s ease);
+}
+
+body {
+
+	overflow: hidden;
+
+}
+
+
+.background {
+
+	width:100%;
+	width:100vw;
+	height:100%;
+	height:100vh;
+	background-color: lighten(gray, 30%);	
+
+}
+
+
+.card {
+
+	@include center;
+	width:900px;
+	height:500px;
+	background-color: white;
+	box-shadow:0px 0px 20px rgba(0,0,0,.4);
+	overflow: scroll;
+	font-family: $volkorn;
+
+	@include breakpoint(950px) {
+
+		width:95%;
+		width:95vw;
+		height:95%;
+		height:95vh;
+		
+	}
+
+}
+
+
+.card-decoration {
+
+	position: absolute;
+	width:100%;
+	height:100%;
+	font-size: 2rem;
+
+	.red-line {
+
+		position: absolute;
+		top:2em;
+		background-color: red;
+		height:1px;
+		width:100%;
+
+
+	}
+
+	.blue-line {
+
+		position: absolute;
+		background-color: blue;
+		
+		height:1px;
+		width:100%;
+
+	}
+
+}
+
+
+@for $i from 2 through 35 {
+
+	.blue-line:nth-child(#{$i}) {
+
+		top: (1em * $i) + 1em;
+
+	}
+
+}
+
+.card-content {
+
+	box-sizing:border-box;
+	padding:0 25px;
+
+	.card-title {
+
+		line-height: 3em;
+		font-size: 1.5em;
+
+	}
+
+	h2 {
+
+		font-size: 1.5em;
+		
+
+	}
+
+	p {
+
+		line-height: 2rem;
+
+	}
+
+
+
+}
+

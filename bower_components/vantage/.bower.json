@@ -1,0 +1,14 @@
+{
+  "name": "vantage",
+  "homepage": "https://github.com/austenpayan/vantage",
+  "_release": "40ada63cf7",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "40ada63cf7e3aeff6481b58365d8763690a65f02"
+  },
+  "_source": "git://github.com/austenpayan/vantage.git",
+  "_target": "*",
+  "_originalSource": "austenpayan/vantage",
+  "_direct": true
+}
